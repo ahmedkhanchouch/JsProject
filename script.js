@@ -1,29 +1,33 @@
-// console.log("Hello World");
+// Déclaration du tableau contenant la liste des mots proposés à l'utilisateur
+const listeMots = ['Cachalot', 'Pétunia', 'Serviette']
+const listePhrases = ["Pas de panique !", "La vie, l’univers et le reste", "Merci pour le poisson"]
+let score = 0
 
-// let motTapeOk = false // Essayez de mettre false à la place de true
 
-// if (motTapeOk) {
-//     console.log("Bravo, vous avez correctement tapé le mot")
-// } else {
-//     console.log("Échec, le mot n'est pas correct")
-// }
-const listeMots = ["Cachalot","Pétunia","Serviette"]; 
-let score = 0;
-let motTape = prompt("Tapez le mot:"+ listeMots[0]);
-if (motTape === listeMots[0]) {
-    score++; 
-}
-motTape = prompt("Tapez le mot:"+ listeMots[1]);
-if (motTape === listeMots[1]) {
-    score++; 
-}
-motTape = prompt("Tapez le mot:"+ listeMots[2]);
-if (motTape === listeMots[2]) {
-    score++; 
+let choix = prompt("veillez choisir la liste :  mots ou phrases")
+
+while (choix !== 'mots' && choix !== 'phrases') {
+    choix = prompt("veillez choisir la liste :  mots ou phrases")
 }
 
-console.log(score)
-//     console.log("Bravo, vous avez correctement tapé le mot")
-// } else {
-//     console.log("Échec, le mot n'est pas correct")
-// }
+if (choix === 'mots') {
+    for (let i = 0; i < listeMots.length; i++) {
+        let motUtilisateur = prompt('Entrez le mot : ' + listeMots[i])
+        if (motUtilisateur === listeMots[i]) {
+            score++
+        }
+    
+    }
+} else {
+    for (let i = 0; i < listePhrases.length; i++) {
+        let phraseUtilisateur = prompt('Entrez la phrase : ' + listePhrases[i])
+        if (phraseUtilisateur === listePhrases[i]) {
+            score++
+        }
+    
+    }
+}
+
+
+// Affichage du score de l'utilisateur
+console.log("Votre score est de " + score + " sur " + listeMots.length)
