@@ -1,33 +1,57 @@
 // Déclaration du tableau contenant la liste des mots proposés à l'utilisateur
-const listeMots = ['Cachalot', 'Pétunia', 'Serviette']
-const listePhrases = ["Pas de panique !", "La vie, l’univers et le reste", "Merci pour le poisson"]
+
 let score = 0
 
 
-let choix = prompt("veillez choisir la liste :  mots ou phrases")
-
-while (choix !== 'mots' && choix !== 'phrases') {
-    choix = prompt("veillez choisir la liste :  mots ou phrases")
-}
 
 if (choix === 'mots') {
-    for (let i = 0; i < listeMots.length; i++) {
-        let motUtilisateur = prompt('Entrez le mot : ' + listeMots[i])
-        if (motUtilisateur === listeMots[i]) {
-            score++
-        }
     
-    }
 } else {
     for (let i = 0; i < listePhrases.length; i++) {
         let phraseUtilisateur = prompt('Entrez la phrase : ' + listePhrases[i])
         if (phraseUtilisateur === listePhrases[i]) {
             score++
         }
-    
+        
     }
 }
 
 
 // Affichage du score de l'utilisateur
-console.log("Votre score est de " + score + " sur " + listeMots.length)
+function afficherResultat(score,nbMotsProposes) { 
+    console.log("Votre score est de " + score + " sur " + nbMotsProposes)
+    
+}
+
+function choisirPhrasesOuMots() {
+    let choix = prompt("veillez choisir la liste :  mots ou phrases")
+    while (choix !== 'mots' && choix !== 'phrases') {
+        choix = prompt("veillez choisir la liste :  mots ou phrases")
+    }
+    return choix
+}
+
+function lancerBoucleDeJeu (listePropositions) {
+    for (let i = 0; i < listePropositions.lenght; i++) {
+        let motUtilisateur = prompt('Entrez le mot : ' + listePropositions[i])
+        if (motUtilisateur === listePropositions[i]) {
+            score++
+        }
+        return score
+    }
+}
+
+
+function lancerJeu() {
+    let choix = choisirPhrasesOuMots()
+    let score = 0 ;
+    let nbMotsProposes = 0 ; 
+    
+    if( choix === 'mots'){
+        lancerBoucleDeJeu(listeMots)
+    }else{
+        lancerBoucleDeJeu(listePhrases)
+    }
+    
+    afficherResultat(score,nbMotsProposes)
+}
